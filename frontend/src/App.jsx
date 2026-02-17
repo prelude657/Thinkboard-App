@@ -7,17 +7,18 @@ import NoteDetailPage from "./pages/NoteDetailPage";
 
 const App = () => {
   return (
-    <div data-theme="forest" >
+  <div className="relative min-h-screen w-full">
+  <div className="absolute inset-0 -z-10 bg-[radial-gradient(125%_125%_at_50%_10%,#000_60%,#00ff9d40_100%)]" />
 
-    <Toaster position="top-center" /> {/* <-- Add this here */}
+  <Toaster position="top-center" />
 
-      {/* Routes */}
-      <Routes>
-        <Route path="/" element={<Homepage />} />
-        <Route path="/create" element={<CreatePage />} />
-        <Route path="/note/:id" element={<NoteDetailPage />} />
-      </Routes>
-    </div>
+  <Routes>
+    <Route path="/" element={<Homepage />} />
+    <Route path="/create" element={<CreatePage />} />
+    <Route path="/note/:id" element={<NoteDetailPage />} />
+  </Routes>
+</div>
+
   );
 };
 
