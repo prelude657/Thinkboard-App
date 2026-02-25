@@ -2,7 +2,7 @@ import { ArrowLeftIcon } from "lucide-react";
 import React, { useState } from "react";
 import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
+import api from "../lib/axios";
 
 const CreatePage = () => {
   const [title, setTitle] = useState("");
@@ -15,50 +15,59 @@ const CreatePage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // If button is currently disabled (5-second lock)
+    // Prevent action if button is temporarily locked
     if (disabledButton) return;
 
     // CASE: Empty title or content
     if (!title.trim() || !content.trim()) {
-      setClickCount((prev) => prev + 1);
+
+      // Safer click counter logic using functional update
+      // Prevents React batching issues
+      setClickCount((prev) => {
+        const newCount = prev + 1;
+
+        if (newCount >= 10) {
+          toast.error("Stop spamming! Wait 5 seconds.", {
+            icon: "💀",
+            duration: 4000,
+          });
+
+          setDisabledButton(true);
+
+          // Re-enable button after 5 seconds
+          setTimeout(() => {
+            setDisabledButton(false);
+          }, 5000);
+
+          return 0; // Reset counter safely
+        }
+
+        return newCount;
+      });
 
       toast.error("Both Title and Content are required!", {
         icon: "💀",
         duration: 4000,
       });
 
-      // If user clicked 10 times with empty fields → disable button for 5s
-      if (clickCount + 1 >= 10) {
-        toast.error("Stop spamming! Wait 5 seconds.", {
-          icon: "💀",
-          duration: 4000,
-        });
-
-        setDisabledButton(true);
-        setClickCount(0); // reset counter
-
-        // Re-enable button after 5 seconds
-        setTimeout(() => {
-          setDisabledButton(false);
-        }, 5000);
-      }
-      return; // Don't submit
+      return;
     }
 
-    // Reset click count if fields are filled
+    // Reset click count if fields are valid
     setClickCount(0);
     setLoading(true);
 
     try {
-      await axios.post("http://localhost:5001/api/notes", { title, content });
+      await api.post("/notes", { title, content });
+
       toast.success("Note created!", { duration: 4000 });
-      setTitle("");
-      setContent("");
-      navigate("/"); // Redirect to homepage
+
+      navigate("/");
+
     } catch (error) {
       console.log("Error creating note", error);
 
-      if (error.response && error.response.status === 429) {
+      if (error.response?.status === 429) {
         toast.error("Too many requests! Please wait.", {
           icon: "💀",
           duration: 4000,
@@ -79,7 +88,6 @@ const CreatePage = () => {
       <div className="container mx-auto px-4 py-12">
         <div className="max-w-2xl mx-auto">
 
-         
           <Link to="/" className="btn btn-ghost mb-6">
             <ArrowLeftIcon className="size-5" />
             Back to Notes
@@ -137,16 +145,18 @@ const CreatePage = () => {
                   <button
                     type="submit"
                     className="btn btn-primary px-6 py-2 rounded-lg"
-                    disabled={loading || disabledButton} // disable during loading or 5s lock
+                    disabled={loading || disabledButton}
                   >
-                    {loading ? "Creating..." : disabledButton ? "Wait 5s..." : "Create Note"}
+                    {loading
+                      ? "Creating..."
+                      : disabledButton
+                      ? "Wait 5s..."
+                      : "Create Note"}
                   </button>
                 </div>
-
               </form>
             </div>
           </div>
-
         </div>
       </div>
     </div>

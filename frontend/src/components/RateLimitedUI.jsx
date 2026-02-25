@@ -23,7 +23,7 @@ const RateLimitedUI = () => {
         </p>
 
         {/* Button */}
-        <button className="btn btn-warning w-full">
+        <button className="btn btn-warning w-full" onClick={() => window.location.reload()}>
           Try Again
         </button>
       </div>
