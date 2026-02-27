@@ -40,8 +40,8 @@ const NoteDetailPage = () => {
 
     try {
       await api.put(`/notes/${id}`, { title, content });
-      toast.success("Note updated successfully");
-      navigate("/");
+     navigate("/"); 
+     toast.success("Note updated successfully");
     } catch (error) {
       console.error("Error updating note:", error);
       toast.error("Failed to update note");
@@ -64,7 +64,7 @@ const NoteDetailPage = () => {
       <div className="w-full max-w-xl card bg-gray-900 text-white shadow-xl rounded-2xl p-8">
         <h2 className="text-2xl font-semibold mb-6">Edit Note</h2>
 
-         <Link to="/" className="btn btn-ghost mb-6">
+          <Link to="/" className="btn btn-ghost mb-6">
             <ArrowLeftIcon className="size-5" />
             Back to Notes
           </Link>
