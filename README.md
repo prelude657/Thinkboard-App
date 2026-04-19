@@ -171,3 +171,7 @@ If you're interested in collaborating or discussing opportunities, feel free to 
 <img width="1723" height="878" alt="Screenshot 2026-04-19 at 11 55 07 AM" src="https://github.com/user-attachments/assets/f204cc1e-f605-41ae-aa7d-9726fc7656bf" />
 <img width="1672" height="867" alt="Screenshot 2026-04-19 at 11 54 21 AM" src="https://github.com/user-attachments/assets/c0dc4db7-5e99-4aae-bce6-3dd4965f5b11" />
 
+MongoDB Activity Screenshot
+<img width="1297" height="524" alt="Screenshot 2026-04-19 at 12 02 58 PM" src="https://github.com/user-attachments/assets/55fbe3ad-e2a5-489b-a6f2-9512fd325e83" />
+
+
