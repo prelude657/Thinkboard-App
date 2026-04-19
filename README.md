@@ -1,132 +1,100 @@
-# 📌 Thinkboard – MERN Notes Application
+# 🧠 MERN Stack Thinkboard
 
-A full-stack notes application built using the **MERN stack** (MongoDB, Express, React, Node.js). Users can create, view, and manage notes through a responsive and modern UI powered by TailwindCSS and DaisyUI.
-
----
-
-## 🚀 Tech Stack
-
-### Frontend
-- React (Vite)
-- React Router
-- TailwindCSS
-- DaisyUI
-- React Hot Toast
-
-### Backend
-- Node.js
-- Express.js
-- MongoDB
-- Mongoose
+A full-stack MERN application for creating, managing, and organizing notes, built with a focus on performance, reliability, and scalable backend architecture.
 
 ---
 
-## ✨ Features
+## 🚀 Overview
 
-- Create notes
-- View all notes
-- View individual note details
-- RESTful API integration
-- Responsive UI
-- Themed interface (DaisyUI – Forest theme)
-- Toast notifications for user feedback
+This project goes beyond basic CRUD by implementing real-world backend patterns such as rate limiting, fault tolerance, and external service integration.
+
+Users can create, edit, and manage notes through a responsive interface backed by a robust API.
 
 ---
 
-## 📂 Project Structure
+## 🛠️ Tech Stack
 
-```
-Thinkboard-App/
-│
-├── backend/
-│   ├── routes/
-│   ├── controllers/
-│   ├── models/
-│   └── server.js
-│
-├── frontend/
-│   ├── src/
-│   │   ├── pages/
-│   │   ├── App.jsx
-│   │   └── main.jsx
-│   ├── tailwind.config.js
-│   └── vite.config.js
-│
-└── README.md
-```
+**Frontend**
+- React  
+- JavaScript (ES6+)  
+- CSS  
+
+**Backend**
+- Node.js  
+- Express.js  
+- MongoDB (Mongoose)  
+
+**Infrastructure**
+- Upstash Redis (serverless)  
+- REST APIs  
+- Middleware architecture  
 
 ---
 
-## ⚙️ Installation
+## 🔥 Key Features
 
-### 1️⃣ Clone the repository
+### 📝 Notes Management
+- Create, update, and delete notes  
+- Dynamic UI with real-time updates  
+- Clean and responsive interface  
+
+### ⚡ Rate Limiting
+- Implemented API rate limiting using Upstash Redis  
+- Sliding window algorithm to control request flow  
+- Prevents API abuse and improves stability  
+
+### 🛡️ Fault-Tolerant Backend
+- Graceful fallback if Redis is unavailable  
+- Prevents application crashes due to external service failures  
+- Ensures consistent API availability  
+
+### 🔄 Keep-Alive System
+- Background process to maintain Redis activity  
+- Prevents inactivity timeouts in serverless environments  
+- Improves reliability of external services  
+
+---
+
+## 📁 Project Structure
+
+
+backend/
+├── config/
+├── middleware/
+├── routes/
+├── src/server.js
+
+frontend/
+├── components/
+├── pages/
+
+
+---
+
+## ⚙️ Environment Variables
+
+Create a `.env` file in the backend directory:
+
+
+UPSTASH_REDIS_REST_URL=your_url
+UPSTASH_REDIS_REST_TOKEN=your_token
+MONGO_URI=your_mongodb_connection
+PORT=5001
+
+
+---
+
+## ▶️ Getting Started
 
 ```bash
-git clone https://github.com/prelude657/Thinkboard-App.git
-cd Thinkboard-App
-```
-
-### 2️⃣ Install Backend Dependencies
-
-```bash
-cd backend
+# Install dependencies
 npm install
+
+# Run backend
 npm run dev
-```
-
-Backend runs on:
-
-```
-http://localhost:5001
-```
-
-### 3️⃣ Install Frontend Dependencies
-
-Open a new terminal:
-
-```bash
-cd frontend
-npm install
-npm run dev
-```
-
-Frontend runs on:
-
-```
-http://localhost:5173
-```
-
----
-
-## 🔗 API Endpoints
-
-| Method | Endpoint        | Description         |
-|--------|----------------|---------------------|
-| GET    | /api/notes     | Fetch all notes     |
-| GET    | /api/notes/:id | Fetch single note   |
-| POST   | /api/notes     | Create new note     |
-
----
-
-## 🛠️ Development Notes
-
-- Vite proxy configured to forward `/api` requests to backend.
-- TailwindCSS v3 configured with PostCSS.
-- DaisyUI theme: `forest`.
-
----
-
-## 📈 Future Improvements
-
-- Edit & Delete functionality
-- Authentication
-- Deployment (Render / Vercel)
-- Search and filtering
-- Pagination
-
----
-
-## 👨‍💻 Author
-
-Kurtis Henry  
-Full-Stack Developer | QA Automation Engineer
+🧠 What This Project Demonstrates
+Full-stack MERN development
+API design and middleware patterns
+Integration with external services (Redis)
+Error handling and system resilience
+Scalable backend architecture
