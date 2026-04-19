@@ -166,3 +166,8 @@ This project highlights several important software engineering principles:
 ## 🤝 Connect
 
 If you're interested in collaborating or discussing opportunities, feel free to reach out or connect with me on LinkedIn.
+
+<img width="1723" height="878" alt="Screenshot 2026-04-19 at 11 55 07 AM" src="https://github.com/user-attachments/assets/f204cc1e-f605-41ae-aa7d-9726fc7656bf" />
+<img width="1672" height="867" alt="Screenshot 2026-04-19 at 11 54 21 AM" src="https://github.com/user-attachments/assets/c0dc4db7-5e99-4aae-bce6-3dd4965f5b11" />
+<img width="1660" height="880" alt="Screenshot 2026-04-19 at 11 53 06 AM" src="https://github.com/user-attachments/assets/10df8900-7381-425c-bac0-398666f9f258" />
+
